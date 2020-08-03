@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\Finder\Finder;
-use Vsch\TranslationManager\Classes\PathTemplateResolver;
+use Cvaize\TranslationManager\Classes\PathTemplateResolver;
 use Vsch\TranslationManager\Classes\TranslationFileRewriter;
 use Vsch\TranslationManager\Models\Translation;
 use Vsch\TranslationManager\Models\UserLocales;
@@ -1651,7 +1651,7 @@ class Manager
     {
         $array = array();
         foreach ($translations as $translation) {
-            array_set($array[$translation->locale][$translation->group], $translation->key, $translation->value);
+            \Arr::set($array[$translation->locale][$translation->group], $translation->key, $translation->value);
         }
         return $array;
     }
@@ -1665,7 +1665,7 @@ class Manager
             $group = $translation->group;
             $key = $translation->key;
             if (!array_key_exists($key, $nonArrays)) {
-                $value = array_get($tree[$translation->locale][$translation->group], $translation->key);
+                $value = \Arr::get($tree[$translation->locale][$translation->group], $translation->key);
 
                 if (is_array($value)) {
                     // this one is an array while it is a translation in the source
