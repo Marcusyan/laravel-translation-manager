@@ -509,7 +509,7 @@ class PathTemplateResolver
                 if ($jsonPath) {
                     $jsonDir = $this->files->dirname($jsonPath);
                     $jsonFile = $this->files->basename($jsonPath);
-                    return $jsonDir . "/" . str_replace_first("{locale}", $locale, $jsonFile);
+                    return $jsonDir . "/" . \Str::replaceFirst("{locale}", $locale, $jsonFile);
                 }
             }
             return null;
@@ -530,4 +530,3 @@ class PathTemplateResolver
         return null;
     }
 }
-
