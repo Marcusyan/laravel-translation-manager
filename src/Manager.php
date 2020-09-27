@@ -1264,7 +1264,7 @@ class Manager
                 // just update the locale with translations, keys are already LTM keys here
                 $translations = $jsonTranslations[$locale];
             } else {
-                $translations = array_dot(include($langFile));
+                $translations = \Arr::dot(include($langFile));
             }
             $this->importTranslationFile($locale, $db_group, $translations, $replace);
         }
