@@ -1918,7 +1918,7 @@ class Controller extends BaseController
             if ($userListProvider !== null && is_a($userListProvider, "Closure")) {
                 $userList = null;
                 $haveUsers = $userListProvider(Auth::user(), $this->manager->getUserListConnection($connection_name), $userList);
-                if ($haveUsers && is_array($userList)) {
+                if ($haveUsers) {
                     /* @var $connection_name string */
                     /* @var $query  \Illuminate\Database\Eloquent\Builder */
                     $userLocalesModel = new UserLocales();
